@@ -1,3 +1,11 @@
 .venv/
 __pycache__/
 .env
+*.aux
+*.bbl
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.blg
+*.fdb_latexmk
