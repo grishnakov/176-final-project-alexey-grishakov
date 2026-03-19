@@ -4,7 +4,7 @@
 
  - Report: [report](report/report.pdf)
  - Code: [code/](code/)
- - Video: [Final video](https://youtube.com)
+ - Video: [Final video](https://youtu.be/XVWqi8_S1Xc)
 
 *Some files such as dataset files and model parameters omitted due to size constraints.*
 
