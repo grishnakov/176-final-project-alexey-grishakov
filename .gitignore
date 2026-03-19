@@ -9,3 +9,6 @@ __pycache__/
 *.synctex.gz
 *.blg
 *.fdb_latexmk
+*.pt
+*.json*
+.vscode/
