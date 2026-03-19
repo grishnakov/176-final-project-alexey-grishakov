@@ -59,9 +59,13 @@ At step \(9{,}500\) (about 10 billion tokens, using the same dataloaders for bot
 
 Most autoregressive language models today rely on self-attention, which scales quadratically with sequence length. As context windows and model sizes increase, this becomes expensive in both memory and compute. The central question of this project is whether attention can be replaced entirely by a geometric flow mechanism while still preserving useful language-modeling quality.
 
+The motivation for this project is to test whether an attention-free architecture can retain strong language-modeling performance while reducing the training and long-context costs associated with standard self-attention. If a geometric mixer can match or exceed a Transformer at similar scale, it could offer a more efficient alternative for future long-context language models.
+
 The architecture studied here comes from ``Attention Is Not What You Need'' \cite{chong2025attentionneed}, which proposes replacing attention with Grassmann-flow geometric mixing over token subspaces. Tokens are projected into a lower-dimensional subspace, causal interactions between positions are encoded through Pl\"ucker coordinates, and a learned geometric mixer replaces attention in each block. Rather than only reproducing the mechanism, I evaluate it at a nontrivial scale (\(\sim\!100\)M parameters).
 
 This report compares the Grassmann model against a causal Transformer baseline trained with the same tokenizer and data pipeline. I report held-out loss and perplexity, total training time, inference runtime, and profiled compute scaling.
+
+While the core project remains the same as in the proposal, the final evaluation setup differs from the original plan: instead of external benchmarks such as WikiText-103 and Lambada, I evaluate both models on a shared held-out split drawn from the same FineWeb-derived token stream used in training.
 
 \section{Related Work}
 
@@ -103,7 +107,7 @@ Both models are trained with the same tokenization, sequence length, and held-ou
 
 \subsection{Datasets and data format}
 \begin{itemize}
-    \item \textbf{Training data:} FineWeb-derived token stream (GPT-2 tokenization, pre-tokenized) \cite{penedo2024the}.
+    \item \textbf{Training data:} FineWeb-derived token stream consisting of a \(100\)B-token sample, downloaded using the recommended method on the dataset's Hugging Face page and then used in GPT-2-tokenized, pre-tokenized form \cite{penedo2024the}.
     \item \textbf{Held out evaluation:} Fixed token windows from \texttt{data/test\_tokens.bin} with starts from \texttt{data/test\_starts.npy}.
     \item \textbf{Evaluation approach:} shared sequence length \(1024\), device CUDA, bfloat16 evaluation.
 \end{itemize}
