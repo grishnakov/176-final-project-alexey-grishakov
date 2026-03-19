@@ -1,6 +1,12 @@
 # ECE 176 Final Project Report and Code
 
-*Dataset files and model parameters omitted due to size constraints.*
+## Final project deliverables:
+
+ - Report: [report.tex](report/report.tex)
+ - Code: [code/](code/)
+ - Video: [Final video](https://youtube.com)
+
+*Some files such as dataset files and model parameters omitted due to size constraints.*
 
 ## A small reflection on this project. 
 
