@@ -2,7 +2,7 @@
 
 ## Final project deliverables:
 
- - Report: [report.tex](report/report.tex)
+ - Report: [report](report/report.pdf)
  - Code: [code/](code/)
  - Video: [Final video](https://youtube.com)
 
